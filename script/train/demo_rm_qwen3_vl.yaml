@@ -10,7 +10,7 @@ freeze_multi_modal_projector: true
 trust_remote_code: true
 use_v1_kernels: true
 flash_attn: fa2
-deepspeed: /home/ma-user/llm_train/LLaMAFactory/LLaMA-Factory-main/examples/deepspeed/ds_z2_config.json
+deepspeed: /home/ma-user/llm_train/LLaMAFactory/LlamaFactory-0.9.4/examples/deepspeed/ds_z2_config.json
 
 ### method
 stage: rm
