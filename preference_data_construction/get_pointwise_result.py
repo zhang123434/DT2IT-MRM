@@ -11,12 +11,6 @@ import pandas as pd
 import concurrent.futures
 from prompt.prompt_pointwise_general_12_19 import prompt_criticV3_en#,prompt_criticV3_ch
 
-username = 'z00770277'
-password = 'bjzt=2022'
-proxy_url = "proxynj.huawei.com"
-os.environ["http_proxy"] = f"http://{username}:{password}@{proxy_url}:8080"
-os.environ["https_proxy"] = f"http://{username}:{password}@{proxy_url}:8080"
-
 import re;
 def get_score(text):
 	# 对于gemini的输出可能需要找到json的位置
@@ -139,8 +133,8 @@ def get_output(item):
 			# client.api_key = 'sk-4sq2G8qXuHAzESP2CLqGdU2qTD3ygh0TIzeKUUm9QQX110Cc'
 			# client.api_key = 'sk-hgiYYZZ6HorJHjxr7a5eE172Ce7041DcA08b651d113bC69f'
 			# client.base_url = 'http://rerverseapi.workergpt.cn/v1'
-			client.api_key = 'sk-wBWkAsTznh6F3YOkFZ9PoA2SaEaZ3MbcygzXcgXAAqI530Kb'
-			client.base_url= 'https://az.gptplus5.com/v1'
+			client.api_key = '<your key>'
+			client.base_url= 'https://xxxx'
 			#gpt-5-chat-latest
 			# response = client.chat.completions.create(
 			# 	model='gpt-5-chat-latest',
