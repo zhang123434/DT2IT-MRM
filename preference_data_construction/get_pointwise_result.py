@@ -9,7 +9,7 @@ import time;
 import httpx
 import pandas as pd
 import concurrent.futures
-from prompt.prompt_pointwise import prompt_criticV3_en#,prompt_criticV3_ch
+from prompt_pointwise import prompt_criticV3_en#,prompt_criticV3_ch
 
 import re;
 def get_score(text):
