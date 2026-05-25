@@ -12,7 +12,7 @@ import concurrent.futures
 import time;
 import random;
 from json_repair import repair_json
-from prompt.prompt_pairwise import prompt_criticV3_en1,prompt_criticV3_ch1;
+from prompt_pairwise import prompt_criticV3_en1,prompt_criticV3_ch1;
 
 import re
 def get_score1(text,num):
