@@ -14,12 +14,6 @@ import random;
 from json_repair import repair_json
 from prompt.prompt_pairwise_general_11_3 import prompt_criticV3_en1,prompt_criticV3_ch1;
 
-username = 'l00942887'
-password = 'ww33hha!'
-proxy_url = "proxynj.huawei.com"
-os.environ["http_proxy"] = f"http://{username}:{password}@{proxy_url}:8080"
-os.environ["https_proxy"] = f"http://{username}:{password}@{proxy_url}:8080"
-
 import re
 def get_score1(text,num):
 	text=text.replace('\\', '\\\\')
@@ -204,8 +198,8 @@ def get_output(item):
 			# client.api_key = 'sk-4sq2G8qXuHAzESP2CLqGdU2qTD3ygh0TIzeKUUm9QQX110Cc'
 			# client.api_key = 'sk-hgiYYZZ6HorJHjxr7a5eE172Ce7041DcA08b651d113bC69f'
 			# client.base_url = 'http://rerverseapi.workergpt.cn/v1'
-			client.api_key = 'sk-fpE28bloHSkMgj6dqFBrSqsMxmspF8mKzHmAcPdGfH37gCle'
-			client.base_url= 'https://az.gptplus5.com/v1'
+			client.api_key = '<your key>'
+			client.base_url= 'https://xxxx'
 			# gpt-5-chat-latest
 			# response = client.chat.completions.create(
 			# 	model='gpt-5-chat-latest',
