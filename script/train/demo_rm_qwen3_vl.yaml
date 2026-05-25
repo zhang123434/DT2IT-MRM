@@ -1,5 +1,5 @@
 ### model
-model_name_or_path: /cache/Qwen3-VL-8B-Instruct
+model_name_or_path: /cache/zzh/Qwen3-VL-8B-Instruct
 image_max_pixels: 268324
 #video_maxlen: 32
 #video_max_pixels: 65536
@@ -10,7 +10,7 @@ freeze_multi_modal_projector: true
 trust_remote_code: true
 use_v1_kernels: true
 flash_attn: fa2
-deepspeed: /home/ma-user/llm_train/LLaMAFactory/LlamaFactory-0.9.4/examples/deepspeed/ds_z2_config.json
+deepspeed: /home/ma-user/llm_train/LLaMAFactory/LLaMA-Factory-main/examples/deepspeed/ds_z2_config.json
 
 ### method
 stage: rm
@@ -20,7 +20,7 @@ disable_gradient_checkpointing: false
 
 ### dataset
 dataset: v6p19_only_mine_and_spa_vl_t2i_133k_processed_rlaif_v_r1_reward_v6_more_s3_mmpr_v2
-dataset_dir: /cache/critic_qa_data
+dataset_dir: /cache/zzh/critic_qa_data
 template: qwen3_vl_nothink
 cutoff_len: 7168
 overwrite_cache: true
@@ -28,7 +28,7 @@ preprocessing_num_workers: 256
 dataloader_num_workers: 64
 
 ### output
-output_dir: /cache/critic_model_v6p19_only_mine_and_spa_vl_t2i_133k_processed_rlaif_v_r1_reward_v6_more_s3_mmpr_v2_low_resolution_bs_512
+output_dir: /cache/zzh/critic_model_v6p19_only_mine_and_spa_vl_t2i_133k_processed_rlaif_v_r1_reward_v6_more_s3_mmpr_v2_low_resolution_bs_512
 logging_steps: 1
 save_steps: 50
 plot_loss: true
