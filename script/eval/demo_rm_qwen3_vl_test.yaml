@@ -1,0 +1,53 @@
+### model
+model_name_or_path: /cache/zzh/critic_model_v6p19_only_mine_and_spa_vl_t2i_133k_processed_rlaif_v_r1_reward_v6_more_s3_mmpr_v2_low_resolution_bs_512/checkpoint-2850
+image_max_pixels: 1310720
+video_maxlen: 64
+video_max_pixels: 1310720
+video_fps: 1
+freeze_vision_tower: true
+freeze_multi_modal_projector: true
+#train_mm_proj_only: false
+trust_remote_code: true
+use_v1_kernels: true
+flash_attn: fa2
+deepspeed: /home/ma-user/llm_train/LLaMAFactory/LLaMA-Factory-main/examples/deepspeed/ds_z3_config.json
+
+### method
+stage: rm
+do_train: false
+do_predict: true
+finetuning_type: full
+disable_gradient_checkpointing: false
+
+### dataset
+eval_dataset: test_rm_system_three_main_bench
+dataset_dir: /cache/zzh/critic_qa_data
+template: qwen3_vl_nothink
+cutoff_len: 12288
+overwrite_cache: true
+preprocessing_num_workers: 256
+dataloader_num_workers: 64
+
+### output
+output_dir: /cache/zzh/critic_model_three_bench_v6p19_only_mine_and_spa_vl_t2i_133k_processed_rlaif_v_r1_reward_v6_more_s3_mmpr_v2_low_resolution_bs_512_checkpoint_2850
+logging_steps: 1
+save_steps: 50
+plot_loss: true
+overwrite_output_dir: true
+save_only_model: true
+report_to: none  # choices: [none, wandb, tensorboard, swanlab, mlflow]
+
+### train
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 8
+learning_rate: 1.0e-5
+num_train_epochs: 1.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.1
+bf16: true
+ddp_timeout: 180000000
+resume_from_checkpoint: null
+seed: 42
+
+### eval
+per_device_eval_batch_size: 1
