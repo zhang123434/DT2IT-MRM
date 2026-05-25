@@ -111,8 +111,8 @@ def process_data(
             except (KeyError, IndexError, TypeError) as e:
                 raise ValueError(f"Invalid data format at item index {idx}: {e}")
 
-            chosen_key = (image_path, question, chosen_answer)
-            rejected_key = (image_path, question, rejected_answer)
+            chosen_key = (image_path, clean_question, chosen_answer)
+            rejected_key = (image_path, clean_question, rejected_answer)
 
             if chosen_key not in score_dict or rejected_key not in score_dict:
                 missing_count += 1
