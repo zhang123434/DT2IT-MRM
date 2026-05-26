@@ -1,13 +1,11 @@
 ## llamafactory训练的qwen3-vl安装环境：
 ### 安装python3.11, 我使用的是python3.11.9
 ### 安装最新版本llamafactory，支持训练qwen3-vl
-pip install /home/ma-user/modelarts/package/moxing_framework-2.3.13-py2.py3-none-any.whl
 cd /home/ma-user/llm_train/LLaMAFactory/
 # pip install /home/ma-user/modelarts/package/moxing_framework-2.2.10-py2.py3-none-any.whl
-rm -rf /home/ma-user/llm_train/LLaMAFactory/LLaMA-Factory-main/
-python -c "import moxing as mox; mox.file.copy_parallel('s3://bucket-pangu-green-guiyang/zhaojie/MLLMData/ml_caption/code/llm_train/LLaMAFactory/LLaMA-Factory-main/', '/home/ma-user/llm_train/LLaMAFactory/LLaMA-Factory-main/',threads=256)"
+rm -rf /home/ma-user/llm_train/LLaMAFactory/LlamaFactory-0.9.4/
 pip install --upgrade pip
-cd /home/ma-user/llm_train/LLaMAFactory/LLaMA-Factory-main/
+cd /home/ma-user/llm_train/LLaMAFactory/LlamaFactory-0.9.4/
 pip install -e ".[torch-npu,metrics]"
 pip install absl-py
 pip install --upgrade botocore boto3
