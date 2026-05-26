@@ -360,8 +360,6 @@ Please refer to our paper for detailed experimental settings and results.
 
 * [ ] Release DT2IT-MRM checkpoints.
 * [ ] Release processed preference data.
-* [ ] Release evaluation outputs.
-* [ ] Add full reproduction scripts for benchmark evaluation.
 * [ ] Add detailed environment/version information.
 * [ ] Add data license and usage documentation.
 
@@ -391,5 +389,3 @@ This repository uses LLaMA-Factory for reward model training. We thank the autho
 ## License
 
 The code and released artifacts are intended for research use. The license information will be updated before the official release of models and data. For datasets derived from existing sources, please also follow the licenses and terms of use of the original datasets.
-[5]: https://arxiv.org/abs/2604.19544 "[2604.19544] DT2IT-MRM: Debiased Preference Construction and Iterative Training for Multimodal Reward Modeling"
-[6]: https://github.com/Kwai-YuanQi/MM-RLHF "GitHub - Kwai-YuanQi/MM-RLHF: The Next Step Forward in Multimodal LLM Alignment · GitHub"
