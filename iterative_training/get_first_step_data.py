@@ -195,7 +195,7 @@ def add_image_token(question: str) -> str:
     输出 conversations 中的 human value。
     如果 question 已经以 <image> 开头，就不重复添加。
     """
-    if question.startswith("<image>"):
+    if "<image>" in question:
         print("Error: this question should not startswith <image>")
     return "<image>" + question
 
