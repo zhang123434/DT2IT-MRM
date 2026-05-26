@@ -196,7 +196,7 @@ def add_image_token(question: str) -> str:
     如果 question 已经以 <image> 开头，就不重复添加。
     """
     if question.startswith("<image>"):
-        return question
+        print("Error: this question should not startswith <image>")
     return "<image>" + question
 
 
