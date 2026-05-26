@@ -96,6 +96,7 @@ DT2IT-MRM/
 ├── script/
 │   ├── train/                       # Training configuration files
 │   └── eval/                        # Evaluation configuration files
+├── compute_metric.py                # compute metric in three benchmarks
 └── README.md
 ```
 
@@ -139,15 +140,6 @@ A typical preference sample is:
 }
 ```
 
-Please replace the following paths in the config files with your local paths:
-
-```yaml
-model_name_or_path: /path/to/Qwen3-VL-8B-Instruct
-dataset: train_dataset_name
-dataset_dir: /path/to/data_dir
-output_dir: /path/to/output_dir
-```
-
 ---
 
 ## Training
@@ -158,22 +150,26 @@ An example training config is provided in:
 script/train/demo_rm_qwen3_vl.yaml
 ```
 
+Preparation before training:
+* prepare all training image and data(.json file)
+* following LLaMA-Factory, configure the `dataset_info.json` file in the `/path/to/data_dir`
+
 Run reward model training with LLaMA-Factory:
 
 ```bash
 cd LlamaFactory-0.9.4
-
-llamafactory-cli train ../script/train/demo_rm_qwen3_vl.yaml
+export HCCL_CONNECT_TIMEOUT=7200
+export HCCL_EXEC_TIMEOUT=7200
+FORCE_TORCHRUN=1 llamafactory-cli train ../script/train/demo_rm_qwen3_vl.yaml
 ```
 
 Please modify the following fields before training:
 
 ```yaml
-model_name_or_path: /path/to/base_model
-dataset: your_dataset_name
-dataset_dir: /path/to/dataset_dir
+model_name_or_path: /path/to/Qwen3-VL-8B-Instruct
+dataset: train_dataset_name
+dataset_dir: /path/to/data_dir
 output_dir: /path/to/output_dir
-deepspeed: /path/to/deepspeed_config.json
 ```
 
 ---
@@ -186,21 +182,36 @@ An example evaluation config is provided in:
 script/eval/demo_rm_qwen3_vl_test.yaml
 ```
 
+Preparation before evaluation:
+* prepare all test image and data(.json file)
+* following LLaMA-Factory, configure the `dataset_info.json` file in the `/path/to/data_dir`
+
 Run evaluation with:
 
 ```bash
 cd LlamaFactory-0.9.4
-
-llamafactory-cli train ../script/eval/demo_rm_qwen3_vl_test.yaml
+FORCE_TORCHRUN=1 llamafactory-cli train ../script/train/demo_rm_qwen3_vl_test.yaml
 ```
 
-Please update the model path, dataset path, and output path in the evaluation config before running.
+Please modify the following fields before training:
+
+```yaml
+model_name_or_path: /path/to/checkpoint
+dataset: test_dataset_name
+dataset_dir: /path/to/data_dir
+output_dir: /path/to/output_dir
+```
+
+Compute metric:
+```bash
+python compute_metric.py
+```
 
 ---
 
-## Preference Data Construction
+## Preference Data Construction (Initial Preference Pair Construction)
 
-### Pairwise/Listwise Scoring
+### Listwise Scoring
 
 ```bash
 python preference_data_construction/get_pairwise_result.py
@@ -219,6 +230,12 @@ preference_data_construction/prompt_pairwise.py
 preference_data_construction/prompt_pointwise.py
 ```
 
+### Text-to-image Preference Reformulation
+
+```bash
+python preference_data_construction/T2I_reformulation.py
+```
+
 Before running these scripts, please configure:
 
 * input data path
@@ -233,37 +250,31 @@ Before running these scripts, please configure:
 
 The iterative data curation pipeline consists of multiple steps.
 
-### Step 1: Construct MRM Scoring Inputs
+### Construct MRM Scoring Inputs
 
 ```bash
 python iterative_training/construct_mrm_scoring_input.py
 ```
 
-### Step 2: Run MRM Scoring
+### Run MRM Scoring
 
 ```bash
 bash iterative_training/inference_qwen3_vl_single_gpu.sh
 ```
 
-or
-
-```bash
-python iterative_training/qwen3_vl_single_gpu.py
-```
-
-### Step 3: First-Step Data Correction
+### Step 1: Multi-MRM Voting & Label Flipping
 
 ```bash
 python iterative_training/get_first_step_data.py
 ```
 
-### Step 4: Second-Step Filtering and Third-Step Input Construction
+### Step 2: MRM-based Consistency Check & Prepare Step 3 Input
 
 ```bash
 python iterative_training/get_second_step_data_and_third_step_input.py
 ```
 
-### Step 5: Third-Step Data Construction
+### Step 3: Process MLLM annotation result
 
 ```bash
 python iterative_training/get_third_step_data.py
