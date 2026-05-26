@@ -26,7 +26,6 @@ DT2IT-MRM addresses key limitations in existing multimodal preference data, incl
 - **[2026/04/21]** Our paper is available on arXiv: [DT2IT-MRM](https://arxiv.org/abs/2604.19544).
 - **[Coming Soon]** We will release the processed preference data.
 - **[Coming Soon]** We will release the trained DT2IT-MRM checkpoints.
-- **[Coming Soon]** We will provide detailed instructions for reproducing the main benchmark results.
 
 ---
 
