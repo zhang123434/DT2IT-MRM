@@ -37,7 +37,6 @@ We plan to release the following resources for research use:
 |---|---|---|
 | DT2IT-MRM model checkpoint | Coming soon | `PLACEHOLDER_MODEL_LINK` |
 | Processed preference data | Coming soon | `PLACEHOLDER_DATA_LINK` |
-| Evaluation outputs | Coming soon | `PLACEHOLDER_EVAL_LINK` |
 | Training configs | Available in this repo | [`script/train`](script/train) |
 | Evaluation configs | Available in this repo | [`script/eval`](script/eval) |
 
