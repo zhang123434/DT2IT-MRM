@@ -2,8 +2,8 @@ import json
 from pathlib import Path
 
 
-input_file = r"D:\workspace\MMPR-v1.1\bt_stage_2_before_filter_data.jsonl"# 这里输入的也可以是.json文件
-output_file = r"D:\workspace\MMPR-v1.1\bt_stage_2_before_filter_data_nooverlap_answer.jsonl"
+input_file = "/cache/bt_stage_2_before_filter_data.jsonl"# 这里输入的也可以是.json文件
+output_file = "/cache/bt_stage_2_before_filter_data_nooverlap_answer.jsonl"
 
 
 def load_data(input_path):
