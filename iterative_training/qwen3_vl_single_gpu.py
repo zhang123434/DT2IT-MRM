@@ -44,7 +44,7 @@ def contains_chinese(text):
 parser = argparse.ArgumentParser()
 parser.add_argument("--model_path", default='/cache/zzh/critic_model_v6p19_only_mine_and_spa_vl_t2i_133k_processed_rlaif_v_r1_reward_v6_bs_512_low_resolution/checkpoint-1750', type=str)
 # parser.add_argument("--image_dir", default='/cache/zzh/DPO', type=str)
-parser.add_argument("--question_file", default='/cache/zzh/code/DPO/llava-ov-hf-dpo/skywork_reward/reward_input.jsonl', type=str)
+parser.add_argument("--question_file", default='/cache/bt_stage_2_before_filter_data_nooverlap_answer.jsonl', type=str)
 # parser.add_argument("--output_path", default='/cache/zzh/critic_qa_data/test_output.jsonl', type=str)
 parser.add_argument("--batch_size", default=1, type=int)
 parser.add_argument("id", type=int)
